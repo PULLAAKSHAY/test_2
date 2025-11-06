@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Message App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Message App</h1>
+    <form id="message-form">
+      <input type="text" id="message-input" placeholder="Enter your message">
+      <button type="submit">Send</button>
+    </form>
+    <ul id="message-list"></ul>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
