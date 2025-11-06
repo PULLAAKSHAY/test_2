@@ -1,7 +1,8 @@
 name: Python CI
 on:
   push:
-    branches: [ "main" ]
+    branches-ignore:
+      - 'main'
   pull_request:
     branches: [ "main" ]
 jobs:

@@ -1,0 +1,23 @@
+name: CD-デプロイ
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリのコードをチェックアウト
+        uses: actions/checkout@v2
+
+      - name: EC2にSSH接続してデプロイスクリプトを実行
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/CI-CD-flask-app
+            git pull
+            ./deploy.sh
